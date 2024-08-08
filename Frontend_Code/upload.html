@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Create New Blog Post</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+    <style>
+        body {
+            background: url('https://img.freepik.com/free-photo/office-table-with-cup-coffee-keyboard-notepad_1220-4617.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            font-family: "Trirong";
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+        h1 {
+            color: #FFD700;
+        }
+        .option-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-control {
+            background-color: #666666;
+            color: #ffffff;
+            border: 1px solid #cccccc;
+        }
+        .file-label {
+            padding: 6px 12px;
+            cursor: pointer;
+            border-radius: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+        #file-container {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            text-align: center;
+            margin-top: 20px;
+        }
+        #image-container {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            text-align: center;
+            margin-top: 20px;
+        }
+        .file-label:hover {
+            background-color: rgb(35, 175, 35);
+            color: white;
+        }
+        .btn:hover {
+            background-color: rgb(35, 175, 35);
+            color: white;;
+        }
+        .form-group input[type="file"] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">
+            Create New Blog Post
+        </h1>
+        <form id="new-blog-form">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" placeholder="Enter title" required>
+            </div>
+            <div class="form-group">
+                <label for="author">Author</label>
+                <input type="text" class="form-control" id="author" placeholder="Enter author" required>
+            </div>
+            <div class="form-group">
+                <label for="content-option">Content Option</label>
+                <select id="content-option" class="form-control">
+                    <option value="textarea">Type Content</option>
+                    <option value="file">Upload File</option>
+                </select>
+            </div>
+            <div id="content-container">
+                <div class="form-group" id="textarea-container">
+                    <label for="content">Content</label>
+                    <textarea class="form-control" id="content" rows="5" placeholder="Enter content"></textarea>
+                </div>
+                <div class="form-group" id="file-container" style="display: none;">
+                    <label for="file-upload" class="file-label">Choose file</label>
+                    <input type="file" class="form-control" id="file-upload" name="file">
+                </div>
+                <div class="form-group" id="image-container">
+                    <label for="image-upload" class="file-label">Choose Image</label>
+                    <input type="file" class="form-control" id="image-upload" name="image">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.932.0.min.js"></script>
+    <script src="submit_blog.js"></script>
+    <script>
+        document.getElementById('content-option').addEventListener('change', function() {
+            var selectedOption = this.value;
+            var textareaContainer = document.getElementById('textarea-container');
+            var fileContainer = document.getElementById('file-container');
+
+            if (selectedOption === 'textarea') {
+                textareaContainer.style.display = 'block';
+                fileContainer.style.display = 'none';
+            } else if (selectedOption === 'file') {
+                textareaContainer.style.display = 'none';
+                fileContainer.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Blogs Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+    <style>
+        body {
+            background: url('https://img.freepik.com/free-photo/office-table-with-cup-coffee-keyboard-notepad_1220-4617.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            font-family: "Trirong";
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+        h1 {
+            color: #FFD700;
+        }
+        table {
+            background-color: #444444;
+            color: #ffffff;
+        }
+        th {
+            background-color: #555555;
+            color: #ffffff;
+        }
+        td {
+            background-color: #666666;
+            color: #ffffff;
+        }
+        .loading {
+            color: #FF4500;
+        }
+        .error {
+            color: #FF6347;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: rgb(35, 175, 35);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">
+            Blog Post List
+        </h1>
+        <table id="blog-table" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Content</th>
+                    <th>Date Created</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <div class="btn-container">
+            <button id="new-blog-btn" class="btn btn-primary new-blog-btn">Create New Blog Post</button>
+        </div>
+    </div>
+</body>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.932.0.min.js"></script> 
+<script src="script.js"></script>
+</html>
